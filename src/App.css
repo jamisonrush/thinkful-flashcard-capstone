@@ -1,0 +1,25 @@
+.deck {
+    border: 1px solid #000;
+    text-align: left;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .btn {
+    margin-right: 5px;
+  }
+  
+  .delete-button {
+    margin-right: 5px;
+    background: maroon;
+    color: white;
+  }
+
+  .button-group {
+    margin: 10px;
+  }
+
+  .form-element {
+    margin: 10px;
+  }
