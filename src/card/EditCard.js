@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import Stepper from "../Layout/Stepper";
 import { readDeck, listDecks, updateCard, readCard } from "../utils/api/index";
+import CardForm from "./CardForm";
 
 function EditCard({ decks, setDecks }) {
   const history = useHistory();
@@ -78,41 +79,13 @@ function EditCard({ decks, setDecks }) {
       />
       <div className="container deck">
         <h1>Edit Card</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="form-element">
-            <label htmlFor="name" className="form-label" />
-            Front:
-            <input
-              type="text"
-              id="front"
-              name="front"
-              value={formData.front}
-              onChange={handleChange}
-              placeholder="Deck Name"
-              className="form-control"
-            />
-          </div>
-          <div className="form-element">
-            <label htmlFor="desc" className="form-label" />
-            Back:
-            <textarea
-              id="back"
-              name="back"
-              value={formData.back}
-              onChange={handleChange}
-              placeholder="Brief description of the deck"
-              className="form-control"
-            />
-          </div>
-          <div className="button-group">
-            <button onClick={onClickCancel} className="btn btn-outline-danger">
-              Cancel
-            </button>
-            <button type="submit" className="btn btn-outline-success">
-              Submit
-            </button>
-          </div>
-        </form>
+        <CardForm
+          formData={formData}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          onCancelClick={onClickCancel}
+          isAddCard={false}
+        />
       </div>
     </div>
   );
