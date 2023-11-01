@@ -2,15 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import Stepper from "../Layout/Stepper";
 import { readDeck, createCard } from "../utils/api";
+import CardForm from "./CardForm";
 
 function AddCard() {
   const { deckId } = useParams();
   const history = useHistory();
   const [deck, setDeck] = useState({ name: "", cards: [] });
-  const [formData, setFormData] = useState({
-    front: "",
-    back: "",
-  });
+  const [formData, setFormData] = useState({ front: "", back: "" });
 
   useEffect(() => {
     const loadDeck = async () => {
@@ -63,40 +61,13 @@ function AddCard() {
           <h1 style={{ marginRight: "9px" }}>{deck.name}:</h1>
           <h1>Add Card</h1>
         </div>
-        <form onSubmit={handleSubmit}>
-          <div className="form-element">
-            <label htmlFor="front" className="form-label" />
-            Front:
-            <textarea
-              id="front"
-              name="front"
-              placeholder="Front side of card"
-              onChange={handleChange}
-              value={formData.front}
-              className="form-control"
-            />
-          </div>
-          <div className="form-element">
-            <label htmlFor="back" className="form-label" />
-            Back:
-            <textarea
-              id="back"
-              name="back"
-              placeholder="Back side of card"
-              onChange={handleChange}
-              value={formData.back}
-              className="form-control"
-            />
-          </div>
-          <div className="button-group">
-            <button onClick={onDoneClick} className="btn btn-outline-danger">
-              Done
-            </button>
-            <button type="submit" className="btn btn-outline-success">
-              Save
-            </button>
-          </div>
-        </form>
+        <CardForm
+          formData={formData}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          onCancelClick={onDoneClick}
+          isAddCard={true}
+        />
       </div>
     </div>
   );
