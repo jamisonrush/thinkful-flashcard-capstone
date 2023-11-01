@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Stepper from "../Layout/Stepper";
 import { createDeck } from "../utils/api/index";
+import DeckForm from "./DeckForm";
 
 function NewDeck({ setDecks }) {
   const history = useHistory();
@@ -53,42 +54,12 @@ function NewDeck({ setDecks }) {
         }}
       >
         <h1>Create Deck</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="form-element">
-            <label htmlFor="name" className="form-label" />
-            Name:
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Deck Name"
-              className="form-control"
-            />
-          </div>
-          <div className="form-element">
-            <label htmlFor="desc" className="form-label" />
-            Description:
-            <textarea
-              id="desc"
-              name="desc"
-              value={formData.desc}
-              onChange={handleChange}
-              placeholder="Brief description of the deck"
-              className="form-control"
-            />
-          </div>
-          <div className="button-group">
-          <button
-            onClick={onClickCancel}
-            className="btn btn-outline-danger"
-          >
-            Cancel
-          </button>
-          <button type="submit" className="btn btn-outline-success">Submit</button>
-          </div>
-        </form>
+        <DeckForm
+          formData={formData}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          onCancelClick={onClickCancel}
+        />
       </div>
     </div>
   );
